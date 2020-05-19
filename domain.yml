@@ -1,0 +1,65 @@
+intents:
+  - greet
+  - goodbye
+  - category
+  - id
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+
+
+entities:
+  - category
+  - id
+  - name
+
+slots:
+  category:
+    type: text
+    initial_value: null
+  id:
+    type: text
+    initial_value: null
+  name:
+    type: unfeaturized
+    initial_value: null
+
+actions:
+  - action_fetch_name
+
+responses:
+  utter_greet:
+  - text: "Hey, Who are you?"
+    buttons:
+    - title: "Student"
+      payload: '/category{"category": "Student"}'
+    - title: "Teacher"
+      payload: '/category{"category": "Teacher"}'
+
+  utter_ask_id:
+  - text: "Great! tell me your {category}ID."
+
+  utter_tell_id:
+  - text: "Got it, {name} !"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
